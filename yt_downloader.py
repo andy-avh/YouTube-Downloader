@@ -2,8 +2,7 @@ from pytube import YouTube
 
 link = input("Enter the link: ") # ask user for yt video to download
 yt = YouTube(link) # pass user's link to YouTube class
-stream = yt.streams.first()
-stream.download() # this will download in your current working Dir
+
 # Reveal info about the video
 # Title
 print("Title: ", yt.title)
@@ -15,3 +14,12 @@ print("Length of video: ", yt.length,"seconds")
 print("Description: ", yt.description)
 # Rating
 print("Ratings: ", yt.rating)
+
+# Obtain highest resolution possible
+yt = yt.streams.get_highest_resolution()
+
+#start download
+print("Downloading...")
+#will download mp4
+yt.download()
+print("Download Complete!")
